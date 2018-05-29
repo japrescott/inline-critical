@@ -155,7 +155,7 @@ module.exports = function (html, styles, options) {
                     if (o.minify) {
                         diff = minifyCSS(diff);
                     }
-                    
+
                     let path;
                     if (!o.overrideOriginal){
                         path = reaver.rev(file, diff);
