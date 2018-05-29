@@ -155,9 +155,16 @@ module.exports = function (html, styles, options) {
                     if (o.minify) {
                         diff = minifyCSS(diff);
                     }
-
-                    fs.writeFileSync(reaver.rev(file, diff), diff);
-                    $el.attr('href', normalizePath(reaver.rev(href, diff)));
+                    
+                    let path;
+                    if (!o.overrideOriginal){
+                        path = reaver.rev(file, diff);
+                    }
+                    else {
+                        path = file;
+                    }
+                    fs.writeFileSync(path, diff);
+                    $el.attr('href', normalizePath(path));
                 }
             }
 
