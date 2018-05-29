@@ -164,7 +164,7 @@ module.exports = function (html, styles, options) {
                         path = file;
                     }
                     fs.writeFileSync(path, diff);
-                    $el.attr('href', normalizePath(path));
+                    $el.attr('href', normalizePath(href));
                 }
             }
 
