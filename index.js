@@ -109,7 +109,7 @@ module.exports = function (html, styles, options) {
     if (o.ignore) {
         links = _.filter(links, link => {
             const href = $(link).attr('href');
-            return _.findIndex(options.ignore, arg => {
+            return _.findIndex(o.ignore, arg => {
                 return (_.isRegExp(arg) && arg.test(href)) || arg === href;
             }) === -1;
         });
@@ -124,7 +124,8 @@ module.exports = function (html, styles, options) {
         const elements = [
             '<style>',
             indent + styles.replace(/(\r\n|\r|\n)/g, '$1' + targetIndent + indent).replace(/^[\s\t]+$/g, ''),
-            '</style>', ''
+            '</style>',
+            ''
         ].join('\n' + targetIndent).replace(/(\r\n|\r|\n)[\s\t]+(\r\n|\r|\n)/g, '$1$2');
 
         if ($target.length > 0) {
